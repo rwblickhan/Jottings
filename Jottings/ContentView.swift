@@ -13,6 +13,8 @@ struct ContentView: View {
     @Query(filter: #Predicate<Note> { note in !note.isArchived }, sort: \Note.timestamp, order: .reverse)
     private var notes: [Note]
 
+    @State private var content: String = ""
+
     var body: some View {
         NavigationSplitView {
             List {
@@ -24,6 +26,9 @@ struct ContentView: View {
                     }
                 }
                 .onDelete(perform: deleteItems)
+                if notes.count < 10 {
+                    TextField("Jot something down...", text: $content)
+                }
             }
             #if os(macOS)
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
@@ -34,11 +39,6 @@ struct ContentView: View {
                         EditButton()
                     }
                 #endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
             }
         } detail: {
             Text("Select an item")
