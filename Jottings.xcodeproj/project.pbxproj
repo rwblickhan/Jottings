@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		CD96E3E02C274CC400EB37FC /* JottingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD96E3DF2C274CC400EB37FC /* JottingsApp.swift */; };
 		CD96E3E22C274CC400EB37FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD96E3E12C274CC400EB37FC /* ContentView.swift */; };
-		CD96E3E42C274CC400EB37FC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD96E3E32C274CC400EB37FC /* Item.swift */; };
 		CD96E3E62C274CC500EB37FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD96E3E52C274CC500EB37FC /* Assets.xcassets */; };
 		CD96E3EA2C274CC500EB37FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD96E3E92C274CC500EB37FC /* Preview Assets.xcassets */; };
 		CD96E3F52C274CC500EB37FC /* JottingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD96E3F42C274CC500EB37FC /* JottingsTests.swift */; };
 		CD96E3FF2C274CC500EB37FC /* JottingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD96E3FE2C274CC500EB37FC /* JottingsUITests.swift */; };
 		CD96E4012C274CC500EB37FC /* JottingsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD96E4002C274CC500EB37FC /* JottingsUITestsLaunchTests.swift */; };
+		CD96E40E2C274E6900EB37FC /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD96E40D2C274E6900EB37FC /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 		CD96E3DC2C274CC400EB37FC /* Jottings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jottings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD96E3DF2C274CC400EB37FC /* JottingsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JottingsApp.swift; sourceTree = "<group>"; };
 		CD96E3E12C274CC400EB37FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		CD96E3E32C274CC400EB37FC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CD96E3E52C274CC500EB37FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD96E3E72C274CC500EB37FC /* Jottings.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jottings.entitlements; sourceTree = "<group>"; };
 		CD96E3E92C274CC500EB37FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 		CD96E3FA2C274CC500EB37FC /* JottingsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JottingsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD96E3FE2C274CC500EB37FC /* JottingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JottingsUITests.swift; sourceTree = "<group>"; };
 		CD96E4002C274CC500EB37FC /* JottingsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JottingsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CD96E40D2C274E6900EB37FC /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 			children = (
 				CD96E3DF2C274CC400EB37FC /* JottingsApp.swift */,
 				CD96E3E12C274CC400EB37FC /* ContentView.swift */,
-				CD96E3E32C274CC400EB37FC /* Item.swift */,
+				CD96E40D2C274E6900EB37FC /* Note.swift */,
 				CD96E3E52C274CC500EB37FC /* Assets.xcassets */,
 				CD96E3E72C274CC500EB37FC /* Jottings.entitlements */,
 				CD96E3EB2C274CC500EB37FC /* Info.plist */,
@@ -265,8 +265,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD96E3E22C274CC400EB37FC /* ContentView.swift in Sources */,
-				CD96E3E42C274CC400EB37FC /* Item.swift in Sources */,
 				CD96E3E02C274CC400EB37FC /* JottingsApp.swift in Sources */,
+				CD96E40E2C274E6900EB37FC /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  Item.swift
+//  Note.swift
 //  Jottings
 //
 //  Created by Russell Blickhan on 6/22/24.
@@ -9,10 +9,12 @@ import Foundation
 import SwiftData
 
 @Model
-final class Item {
+final class Note {
+    var content: String
     var timestamp: Date
     
-    init(timestamp: Date) {
+    init(content: String, timestamp: Date) {
+        self.content = content
         self.timestamp = timestamp
     }
 }
