@@ -5,8 +5,8 @@
 //  Created by Russell Blickhan on 6/22/24.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @main
 struct JottingsApp: App {

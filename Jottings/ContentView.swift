@@ -5,12 +5,13 @@
 //  Created by Russell Blickhan on 6/22/24.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var notes: [Note]
+    @Query(filter: #Predicate<Note> { note in !note.isArchived }, sort: \Note.timestamp, order: .reverse)
+    private var notes: [Note]
 
     var body: some View {
         NavigationSplitView {
@@ -24,15 +25,15 @@ struct ContentView: View {
                 }
                 .onDelete(perform: deleteItems)
             }
-#if os(macOS)
+            #if os(macOS)
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
+            #endif
             .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
+                #if os(iOS)
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        EditButton()
+                    }
+                #endif
                 ToolbarItem {
                     Button(action: addItem) {
                         Label("Add Item", systemImage: "plus")

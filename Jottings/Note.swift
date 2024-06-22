@@ -12,9 +12,11 @@ import SwiftData
 final class Note {
     var content: String
     var timestamp: Date
-    
+    var isArchived: Bool
+
     init(content: String, timestamp: Date) {
         self.content = content
         self.timestamp = timestamp
+        isArchived = false
     }
 }
