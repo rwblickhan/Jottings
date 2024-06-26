@@ -15,9 +15,16 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         onReturn?()
         return false
     }
+<<<<<<< Updated upstream
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if range.location == 0 && range.length > 0 {
+||||||| Stash base
+=======
+
+    func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString _: String) -> Bool {
+        if range.location == 0, range.length > 0 {
+>>>>>>> Stashed changes
             onDeleteFirstCharacter?()
         }
         return true

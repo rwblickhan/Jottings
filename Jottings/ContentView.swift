@@ -27,7 +27,7 @@ struct ContentView: View {
                             try? modelContext.save()
                         }
                     ), onReturn: {
-                        if note == notes.last && note.content != "" {
+                        if note == notes.last, note.content != "" {
                             let newNote = Note(content: draft, timestamp: Date())
                             modelContext.insert(newNote)
                             focus = newNote.id
@@ -35,10 +35,15 @@ struct ContentView: View {
                             focus = nil
                         }
                     }, onDeleteFirstCharacter: {
-                        if let index = notes.firstIndex(of: note), index > 0 {
-                            focus = notes[index-1].id
-                        }
+                        let newFocus: UUID? = {
+                            if let index = notes.firstIndex(of: note), index > 0 && note != notes.last {
+                                return notes[index - 1].id
+                            } else {
+                                return notes.last?.id
+                            }
+                        }()
                         modelContext.delete(note)
+                        focus = newFocus
                     })
                     .focused($focus, equals: note.id)
                 }
