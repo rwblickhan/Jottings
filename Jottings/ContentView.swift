@@ -10,24 +10,37 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query(filter: #Predicate<Note> { note in !note.isArchived }, sort: \Note.timestamp, order: .reverse)
+    @Query(filter: #Predicate<Note> { note in !note.isArchived }, sort: \Note.timestamp)
     private var notes: [Note]
 
-    @State private var content: String = ""
+    @State private var draft: String = ""
+    @FocusState private var focused: Bool
 
     var body: some View {
         NavigationSplitView {
-            List {
-                ForEach(notes) { note in
-                    NavigationLink {
-                        Text("Item at \(note.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(note.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+            List(0 ..< 10) { index in
+                if index < notes.count {
+                    Text(notes[index].content)
+                } else if index == notes.count && index < 10 {
+                    KeyPressTextField(placeholder: "Jot something down...", text: $draft, onEmptyDelete: {
+                        if index == 0 {
+                            return
+                        }
+                        draft = notes[index - 1].content
+                        modelContext.delete(notes[index - 1])
+                    }, onReturn: {
+                        if draft == "" {
+                            return
+                        }
+                        modelContext.insert(Note(content: draft, timestamp: Date()))
+                        draft = ""
+
+                    })
+                    .id("draft")
+                    .focused($focused)
+                    .onAppear {
+                        focused = true
                     }
-                }
-                .onDelete(perform: deleteItems)
-                if notes.count < 10 {
-                    TextField("Jot something down...", text: $content)
                 }
             }
             #if os(macOS)
@@ -42,13 +55,6 @@ struct ContentView: View {
             }
         } detail: {
             Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newNote = Note(content: "", timestamp: Date())
-            modelContext.insert(newNote)
         }
     }
 
