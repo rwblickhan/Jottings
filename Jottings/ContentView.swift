@@ -34,6 +34,11 @@ struct ContentView: View {
                         } else {
                             focus = nil
                         }
+                    }, onDeleteFirstCharacter: {
+                        if let index = notes.firstIndex(of: note), index > 0 {
+                            focus = notes[index-1].id
+                        }
+                        modelContext.delete(note)
                     })
                     .focused($focus, equals: note.id)
                 }
